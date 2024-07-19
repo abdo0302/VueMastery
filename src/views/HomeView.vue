@@ -1,11 +1,18 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
 import { useStore } from 'vuex';
 import login from '../components/login.vue'
 import sginup from '../components/sginUp.vue'
+import router from '../router/index';
 
 const store = useStore();
 const loginState = computed(() => store.state.login);
+onMounted(() => {
+  const username = sessionStorage.getItem('username');
+  if (username) {
+    router.push('/dashboard');
+  }
+});
 </script>
 <template>
         <div class="bg-slate-100 flex items-center justify-evenly px-6 py-8 mx-auto md:h-screen lg:py-0">

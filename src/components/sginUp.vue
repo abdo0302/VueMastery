@@ -1,7 +1,7 @@
 <script setup>
 import { useStore } from 'vuex';
 import { computed, watch, reactive } from 'vue';
-import { router } from '../router';
+import router from '../router/index';
 const store = useStore();
 
 const handleLoginClick = () => {
@@ -14,7 +14,7 @@ const user={
 }
 const signup = () => {
   store.dispatch('sinup', user).then(() => {
-    $router.push('/dashboard');
+    router.push('/dashboard');
   }).catch(error => {
      alert(error)
     
